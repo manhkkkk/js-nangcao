@@ -13,7 +13,7 @@ module.exports = {
 	rules: {
 		semi: ["error", "always"],
 		quotes: ["error", "double", { allowTemplateLiterals: true }],
-		indent: ["error", 4],
+		indent: ["error", 6],
 		"eol-last": ["error", "never"],
 		"linebreak-style": 0,
 	},
