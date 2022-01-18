@@ -1,10 +1,10 @@
 const Banner = {
-    render() {
-        return `<div
-        class="w-full h-auto pt-4 bg-cover bg-center overflow-hidden"
+	render() {
+		return /* html */`
+		<div class="w-full h-auto pt-4 bg-cover bg-center overflow-hidden"
     >
         <img
-            class="mySlides w-full h-auto bg-cover bg-center relative"
+            class="mySlides w-full h-auto bg-cover bg-center relative "
             src="./image/Banner1.png"
         />
         <img
@@ -12,6 +12,6 @@ const Banner = {
             src="./image/Banner2.png"
         />
     </div>`;
-    },
+	},
 };
 export default Banner;

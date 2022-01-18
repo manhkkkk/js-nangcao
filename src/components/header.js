@@ -1,10 +1,10 @@
 const HeaderPage = {
-    render() {
-        return /*html*/`
+	render() {
+		return /*html*/`
             <header>
             <div class=" container bg-blue-900 mx-auto">
                 <img
-                    src="../../image/logo.png"
+                    src="/image/logo.png"
                     alt="website logo"
                     class="w-80 h-auto mx-auto"
                 />
@@ -61,6 +61,6 @@ const HeaderPage = {
             </nav>
         </header>
         `;
-    },
+	},
 };
 export default HeaderPage;

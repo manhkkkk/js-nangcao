@@ -60,7 +60,7 @@ const AdminNews = {
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="text-sm text-gray-900">Tiêu đề bài viết</div>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="/admin/form" class="inline-block bg-indigo-500 text-while py-2 px-6 rounded text-white text-sm hover:text-indigo-900">Sửa</a>
+                <a href="/admin/news/add/" class="inline-block bg-indigo-500 text-while py-2 px-6 rounded text-white text-sm hover:text-indigo-900">Sửa</a>
                 <button class="inline-block bg-indigo-500 text-while py-2 px-6 rounded text-white text-sm hover:text-indigo-900 mx-3">Xóa</button>
             </td>
           </tr>
