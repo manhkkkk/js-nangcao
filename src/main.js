@@ -26,7 +26,7 @@ router.on({
 		const { id } = data;
 		print(DetailPage.render(id));
 	},
-	"/news/:id": ({ data }) => {
+	"/admin/news/edit/:id": ({ data }) => {
 		const { id } = data;
 		print(AdminNewsEdit.render(id));
 	},

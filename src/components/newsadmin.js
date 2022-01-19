@@ -44,7 +44,7 @@ const newsadmin = {
 												class="w-64 h-48 transform hover: transition duration-500 hover:-translate-y-3 overflow-hidden" /></a>
 												</td>
 												<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-													<a href="/news/${post.id}"
+													<a href="/admin/news/edit/${post.id}"
 														class="inline-block bg-indigo-500 text-while py-2 px-6 rounded text-white text-sm hover:text-indigo-900">Sửa</a>
 													<button
 														class="inline-block bg-indigo-500 text-while py-2 px-6 rounded text-white text-sm hover:text-indigo-900 mx-3">Xóa</button>
