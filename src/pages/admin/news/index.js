@@ -46,6 +46,10 @@ const AdminNews = {
 													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 													Tiêu đề
 												</th>
+												<th scope="col"
+													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+													Anh
+												</th>
 												<th scope="col" class="relative px-6 py-3">
 													<span class="sr-only">Edit</span>
 												</th>
@@ -59,6 +63,10 @@ const AdminNews = {
 											    </td>
 												<td class="px-6 py-4 whitespace-nowrap">
 													<a>${post.title}</a>
+												</td>
+												<td class="px-6 py-4 whitespace-nowrap">
+												<a href="/news/${post.id}"><img src="${post.img}"
+												class="w-64 h-48 transform hover: transition duration-500 hover:-translate-y-3 overflow-hidden" /></a>
 												</td>
 												<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 													<a href="/admin/news/add/"
