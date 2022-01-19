@@ -4,7 +4,7 @@ const HeaderPage = {
             <header>
             <div class=" container bg-blue-900 mx-auto">
                 <img
-                    src="/image/logo.png"
+                    src="https://i.imgur.com/4HqQrjg.png"
                     alt="website logo"
                     class="w-80 h-auto mx-auto"
                 />
