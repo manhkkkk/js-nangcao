@@ -48,7 +48,7 @@ const singupPage = {
 				</div>
 			</div>
 			<footer>
-				${Footer.render}
+				${Footer.render()}
 			</footer>
 		</div>
         `;

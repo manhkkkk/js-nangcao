@@ -2,8 +2,8 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 
 const AboutPage = {
-    render() {
-        return `
+	render() {
+		return `
             <div class="max-w-5xl mx-auto">
                 <header>
                     ${Header.render()}
@@ -17,7 +17,7 @@ const AboutPage = {
             </div>
             
         `;
-    },
+	},
 };
 
 export default AboutPage;

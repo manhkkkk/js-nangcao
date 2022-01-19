@@ -19,7 +19,7 @@ const HomePage = {
 				</div>
 			</main>
 			<footer>
-				${Footer.render}
+				${Footer.render()}
 			</footer>
 		</div>
         	`;

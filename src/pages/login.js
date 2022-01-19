@@ -77,7 +77,7 @@ const loginPage = {
 				</div>
 			</div>
 			<footer>
-				${Footer.render}
+				${Footer.render()}
 			</footer>
 			</div>
         	 `;
