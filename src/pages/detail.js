@@ -14,9 +14,7 @@ const DetailPage = {
 				<div class="banner">
 					${Banner.render()}
 				</div>
-				
 				<div class="border border-sky-500 p-4 my-7 mx-96">
-				
 					<img class="items-center w-96 h-78 transform hover: transition duration-500 hover:-translate-y-3 overflow-hidden" src="${result.img}" />
 					<h1 class="font-semibold text-orange-500 text-lg hover:text-green-500 transition duration-600 ease-in py-3">${result.title}</h1>
 					<p class="text-justify not-italic text-base hover:text-green-500 transition duration-600 ease-in">${result.desc}</p>
