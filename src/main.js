@@ -4,6 +4,7 @@ import HeaderPage from "./components/header";
 import AboutPage from "./pages/about";
 import AdminNews from "./pages/admin/news";
 import AdminNewsAdd from "./pages/admin/news/add";
+import AdminNewsEdit from "./pages/admin/news/edit";
 import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
@@ -31,6 +32,7 @@ router.on({
 	"/admin/singup": () => print(singupPage.render()),
 	"/admin/news": () => print(AdminNews.render()),
 	"/admin/news/add": () => print(AdminNewsAdd.render()),
+	"/admin/news/edit": () => print(AdminNewsAdd.render()),
 });
 
 router.resolve();
