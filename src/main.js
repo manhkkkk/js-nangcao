@@ -1,55 +1,54 @@
 import Navigo from "navigo";
-import footerPage from "./components/footer";
-import HeaderPage from "./components/header";
 import AboutPage from "./pages/about";
 import AdminNews from "./pages/admin/news";
-import AdminNewsEdit from "./pages/admin/news/edit";
 import AdminNewsAdd from "./pages/admin/news/add";
+import AdminNewsEdit from "./pages/admin/news/edit";
+import CartPage from "./pages/cart";
 import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
-import loginPage from "./pages/login";
-import singupPage from "./pages/singup";
-import ProductPage from "./pages/product";
+import ProductsPage from "./pages/product";
+import DetailProductPage from "./pages/product/detail";
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
-const print = (content) => {
-	document.querySelector("#app").innerHTML = content;
+const print = async (component, id) => {
+	document.querySelector("#app").innerHTML = await component.render(id);
+	if (component.afterRender) await component.afterRender(id);
 };
+router.on('/admin/*/', () => { }, {
+	before(done, match) {
+		if (localStorage.getItem('user')) {
+			const userId = JSON.parse(localStorage.getItem('user')).id;
+			if (userId === 1) {
+				// render dựa trên router
+				done();
+			} else {
+				document.location.href = "/"
+			}
+		} else {
+			document.location.href = "/signin"
+		}
+
+	}
+});
 
 router.on({
-	"/": () => print(HomePage.render()),
-	"/about": () => print(AboutPage.render()),
-	"/product": () => print(ProductPage.render()),
-	"/news/:id": ({ data }) => {
-		const { id } = data;
-		print(DetailPage.render(id));
-	},
-	"/admin/news/edit/:id": ({ data }) => {
-		const { id } = data;
-		print(AdminNewsEdit.render(id));
-	},
-	"/admin/dashboard": () => print(DashboardPage.render()),
+	"/": () => print(HomePage),
+	"/about": () => print(AboutPage),
+	"/products": () => print(ProductsPage),
+	"/products/:id": ({ data }) => print(DetailProductPage, data.id),
+	"/news/:id": ({ data }) => print(DetailPage, data.id),
+	"/admin/dashboard": () => print(DashboardPage),
 	"/admin/products": () => console.log("admin product"),
-	"/admin/login": () => print(loginPage.render()),
-	"/admin/singup": () => print(singupPage.render()),
-	"/admin/news": () => print(AdminNews.render()),
-	"/admin/news/add": () => print(AdminNewsAdd.render()),
+	"/admin/news": () => print(AdminNews),
+	"/admin/news/add": () => print(AdminNewsAdd),
+	"/admin/news/:id/edit": ({ data }) => print(AdminNewsEdit, data.id),
+	"/signup": () => print(Signup),
+	"/signin": () => print(Signin),
+	"/cart": () => print(CartPage)
 });
 
 router.resolve();
-//slide
-var myIndex = 0;
-carousel();
-function carousel() {
-	var i;
-	var x = document.getElementsByClassName("mySlides");
-	for (i = 0; i < x.length; i++) {
-		x[i].style.display = "none";
-	}
-	myIndex++;
-	if (myIndex > x.length) { myIndex = 1; }
-	x[myIndex - 1].style.display = "block";
-	setTimeout(carousel, 3000);
-}
