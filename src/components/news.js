@@ -27,7 +27,7 @@ const News = {
 											</a>
 										</h3>
 									</div>
-									<p class="text-sm font-medium text-gray-900">${products.price}</p>
+									<p class="text-sm font-medium text-gray-900">$${products.price}</p>
 								</div>
 							</div>
 						

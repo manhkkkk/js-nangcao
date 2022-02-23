@@ -1,10 +1,11 @@
+
 import NavAdmin from "../../../components/NavAdmin";
 import axios from "axios";
-import { add } from "../../../api/posts";
+import { add } from "../../../api/products";
 
 const AdminNewsAdd = {
-  render() {
-    return /*html*/ `
+	render() {
+		return /*html*/ `
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -35,14 +36,15 @@ const AdminNewsAdd = {
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                    <form id="form-add-post">
-                        <input type="text" class="border border-black" id="title-post" placeholder="Title"/><br />
+                    <form id="form-add-product">
+                        <input type="text" class="shadow-sm p-2  focus:ring-indigo-500 focus:border-indigo-500 mt-1 block sm:text-sm border border-gray-300 rounded-md" id="product-name" placeholder="Name"/><br /> <!--titlepost-->
+				<input type="number" class="border border-blackshadow-sm p-2  focus:ring-indigo-500 focus:border-indigo-500 mt-1 block sm:text-sm border border-gray-300 rounded-md" id="product-price" placeholder="Price"/><br /> <!--titlepost-->
                         <div class="w-3xl grid grid-cols-2 gap-8">
-                            <div><input type="file" class="border border-black" id="img-post" /></div>
-                            <div><img width="200" src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/></div>
+                            <div><input type="file" class="border border-black" id="img-product" /></div>
+                            <div><img width="200" src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/></div><!--img-preview-->
                         </div>
-                        <textarea name="" cols="30" rows="10" class="border border-black" id="desc-post" placeholder="Description"></textarea><br />
-                        <button>Thêm</button>
+                        <textarea name="" cols="30" rows="10" class="shadow-sm p-8 focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" id="product-desc" placeholder="descript"></textarea><br /><!--img-desscript-->
+                        <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Thêm</button>
                     </form>
                 </div>
                 <!-- /End replace -->
@@ -50,35 +52,37 @@ const AdminNewsAdd = {
             </main>
         </div>
         `;
-  },
-  afterRender() {
-    const formAdd = document.querySelector("#form-add-post");
-    const imgPreview = document.querySelector("#img-preview");
-    const imgPost = document.querySelector("#img-post");
-    const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
-    const CLOUDINARY_PRESET = "jkbdphzy";
+	},
+	afterRender() {
+		const formAdd = document.querySelector("#form-add-product");
+		const imgProduct = document.querySelector("#img-product")
+		const imgPreview = document.querySelector("#img-preview")
+		const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+		const CLOUDINARY_PRESET = "jkbdphzy";
 
-    formAdd.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const file = imgPost.files[0];
+		formAdd.addEventListener("submit", async function (e) {
+			e.preventDefault();
+			const file = imgProduct.files[0];
+			const formData = new FormData();
+			formData.append("file", file);
+			formData.append("upload_preset", CLOUDINARY_PRESET);
 
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", CLOUDINARY_PRESET);
-
-        // call api cloudinary
-        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-            headers: {
-                "Content-Type": "application/form-data"
-            }
-        })
-        // call api thêm bài viết
-        add({
-            title: document.querySelector("#title-post").value,
-            img: data.url,
-            desc: document.querySelector("#desc-post").value,
-        });
-    });
-  },
+			// call api cloudinary
+			const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+				headers: {
+					"Content-Type": "application/form-data"
+				}
+			})
+			add({
+				name: document.querySelector("#product-name").value,
+				img: data.url,
+				desc: document.querySelector("#product-desc").value,
+				price: document.querySelector("#product-price").value,
+			});
+		});
+	},
 };
 export default AdminNewsAdd;
+
+
+
