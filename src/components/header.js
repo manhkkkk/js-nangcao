@@ -1,8 +1,10 @@
 import { reRender } from "../utils";
+import { getAll } from "../api/categories";
 
 
 const Header = {
-	render() {
+	async render() {
+		const categories = await getAll()
 		return /*html*/`
     <div class="relative bg-white overflow-hidden ">
     <div class="max-w-7xl mx-auto">
@@ -39,20 +41,28 @@ const Header = {
 							    </div>
 						    </div>
 					    </div>
-					    <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-						    <a href="/#/products"
-							    class="font-medium text-gray-500 hover:text-gray-900">Product</a>
-
+					    <div class=" md:block md:ml-10 md:pr-4 md:space-x-8 flex flex-row">
+							    <div >
+						    </div>
 						    <a href="/#/about"
 							    class="font-medium text-gray-500 hover:text-gray-900">Features</a>
 
-						    <a href="/#/news"
+						    <a href="/#/admin/news"
 							    class="font-medium text-gray-500 hover:text-gray-900">Marketplace</a>
 
 						    
 
 						    <a href="/#/signin" class="font-medium text-indigo-600 hover:text-indigo-500">Log
 							    in</a>
+							    <div class="dropdown inline-block relative">
+								    <button class="text-gray-500 font-semibold py-2 px-4 rounded inline-flex items-center">
+									    <span class="mr-1">Categorys</span>
+								    </button>
+								    <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+								    ${categories.data.map((category) => `<li class=""><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+								    href="/#/category/${category.id}">${category.name}</a></li>`).join('')}
+								    </ul>
+							    </div>
 					    </div>
 				    </nav>
 				    
@@ -138,8 +148,7 @@ const Header = {
     </div>
 
     <div class="hidden lg:ml-8 lg:flex">
-	    <a href="/#/admin" class="text-gray-700 hover:text-gray-800 flex items-center">
-			    class="w-5 h-auto block flex-shrink-0">
+	    <a href="/#/admin/news" class="text-gray-700 hover:text-gray-800 flex items-center">
 		    <span class="ml-3 block text-sm font-medium"> admin </span>
 		    <span class="sr-only">, change currency</span>
 	    </a>
@@ -181,17 +190,17 @@ const Header = {
         `;
 	},
 	afterRender() {
-		// lấy thông tin username từ localStorage và hiển thị ra ngoài
-		const username = JSON.parse(localStorage.getItem("user")).user.username;
-		document.querySelector('#accountInfo').innerHTML = username;
-		// Logout
-		const logout = document.querySelector('#logout');
-		if (logout) {
-			logout.addEventListener('click', function () {
-				localStorage.removeItem('user');
-				reRender(Header, "#header");
-			})
-		}
+		// // lấy thông tin username từ localStorage và hiển thị ra ngoài
+		// const username = JSON.parse(localStorage.getItem("user")).user.username;
+		// document.querySelector('#accountInfo').innerHTML = username;
+		// // Logout
+		// const logout = document.querySelector('#logout');
+		// if (logout) {
+		// 	logout.addEventListener('click', function () {
+		// 		localStorage.removeItem('user');
+		// 		reRender(Header, "#header");
+		// 	})
+		// }
 	}
 };
 export default Header;

@@ -4,11 +4,11 @@ import Header from "../components/header";
 import News from "../components/news";
 
 const HomePage = {
-    async render() {
-        return /* html */`
+	async render() {
+		return /* html */`
             <div class="max-w-5xl mx-auto">
                 <header id="header">
-                    ${Header.render()}
+                    ${await Header.render()}
                 </header>
                 <main>
                     <div class="banner">
@@ -24,9 +24,9 @@ const HomePage = {
             </div>
             
         `;
-    },
-    afterRender(){
-        Header.afterRender()
-    }
+	},
+	afterRender() {
+		Header.afterRender()
+	}
 };
 export default HomePage;

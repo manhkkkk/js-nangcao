@@ -69,11 +69,14 @@ const AdminNewsAdd = {
 
 			// call api cloudinary
 			const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+
 				headers: {
-					"Content-Type": "application/form-data"
+					"Content-Type": "application/form-data",
+
 				}
 			})
 			add({
+
 				name: document.querySelector("#product-name").value,
 				img: data.url,
 				desc: document.querySelector("#product-desc").value,

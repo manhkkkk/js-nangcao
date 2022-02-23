@@ -11,7 +11,8 @@ import ProductsPage from "./pages/product";
 import DetailProductPage from "./pages/product/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
-
+import categoryPage from "./pages/categories/category";
+import DetailCategory from "./pages/categories/detail";
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (component, id) => {
@@ -48,7 +49,9 @@ router.on({
 	"/admin/news/:id/edit": ({ data }) => print(AdminNewsEdit, data.id),
 	"/signup": () => print(Signup),
 	"/signin": () => print(Signin),
-	"/cart": () => print(CartPage)
+	"/cart": () => print(CartPage),
+	"/categor": () => print(categoryPage),
+	"/category/:id": () => print(DetailCategory),
 });
 
 router.resolve();

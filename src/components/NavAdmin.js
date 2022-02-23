@@ -29,9 +29,9 @@ const NavAdmin = {
                   >
 
                   <a
-                    href="#"
+                    href="/admin/category"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >Projects</a
+                    >Category</a
                   >
 
                   <a
