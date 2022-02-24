@@ -10,7 +10,7 @@ const CartPage = {
 			cart = JSON.parse(localStorage.getItem('cart'));
 		}
 		return `
-	 
+		
 <div class=" fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
 <div class="absolute inset-0 overflow-hidden">
 	<div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>

@@ -1,12 +1,12 @@
 import { reRender } from "../utils";
 import { getAll } from "../api/categories";
-
+import { searchProducts } from '../api/products'
 
 const Header = {
 	async render() {
 		const categories = await getAll()
 		return /*html*/`
-    <div class="relative bg-white overflow-hidden ">
+    <div class="relative bg-white overflow-hidden header ">
     <div class="max-w-7xl mx-auto">
 	    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
 		    <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
@@ -140,8 +140,6 @@ const Header = {
     <div class=" absoluteml-auto flex items-center relative pt-8 px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">${localStorage.getItem('user') ?
 				`
-	    <a id="accountInfo" class="text-sm font-medium text-gray-700 hover:text-gray-800">Phan Manh</a>
-	    <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
 	    <button id="logout" class="text-sm font-medium text-gray-700 hover:text-gray-800">Logout </button>
 	    `: ""}
 
@@ -149,27 +147,22 @@ const Header = {
 
     <div class="hidden lg:ml-8 lg:flex">
 	    <a href="/#/admin/news" class="text-gray-700 hover:text-gray-800 flex items-center">
-		    <span class="ml-3 block text-sm font-medium"> admin </span>
+		    <span class="ml-3 block text-sm font-medium mr-8"> admin </span>
 		    <span class="sr-only">, change currency</span>
 	    </a>
     </div>
-
-    <!-- Search -->
-    <div class="flex lg:ml-6">
-	    <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
-		    <span class="sr-only">Search</span>
-		    <!-- Heroicon name: outline/search -->
-		    <a href="/cart"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-		    stroke="currentColor" aria-hidden="true">
-		    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-			    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-	    </svg></a>
-	    </a>
-    </div>
+		<div> 
+			<form action="" id="search-form">
+				<div class="flex	">
+					<input type="text" id="keyword" placeholder="Search" class="border 	">
+					<button type="submit " class="bg-gray-700">Search</button>
+				</div>
+			</form>
+		</div>
 
     <!-- Cart -->
     <div class="ml-4 flow-root lg:ml-6">
-	    <a href="#" class="group -m-2 p-2 flex items-center">
+	    <a href="/#/cart" class="group -m-2 p-2 flex items-center">
 		    <!-- Heroicon name: outline/shopping-bag -->
 		    <svg class="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
 			    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -190,6 +183,11 @@ const Header = {
         `;
 	},
 	afterRender() {
+		document.querySelector('#search-form').addEventListener('submit', (e) => {
+			e.preventDefault()
+			const keyword = document.querySelector('#keyword').value
+			document.location.href = `/search/${keyword}`
+		})
 		// // lấy thông tin username từ localStorage và hiển thị ra ngoài
 		// const username = JSON.parse(localStorage.getItem("user")).user.username;
 		// document.querySelector('#accountInfo').innerHTML = username;

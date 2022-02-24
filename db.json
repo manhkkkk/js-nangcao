@@ -211,7 +211,7 @@
 			"desc": "day la mo ta",
 			"id": "16",
 			"price": "300",
-			"category": "1"
+			"categoryId": "1"
 		},
 		{
 			"createdAt": "2022-01-10T20:33:27.477Z",
@@ -220,21 +220,22 @@
 			"desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
 			"id": "19",
 			"price": "200",
-			"category": "The Basic Tee 6-Pack allows you to fully expressyour"
+			"categoryId": "2"
 		},
 		{
 			"name": "123123",
 			"img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1645586691/fgbcipduvbfajpurwczb.jpg",
 			"category": "124214",
 			"price": "412414",
-			"id": "TZpXtlc"
+			"id": "2",
+			"categoryId": "2"
 		},
 		{
 			"name": "phan",
 			"img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1645588674/gbpzn42nt5navgfejfkw.jpg",
 			"desc": "12312312",
 			"price": "14",
-			"id": "dOcy6VD"
+			"id": "1"
 		}
 	],
 	"users": [
@@ -254,7 +255,11 @@
 	"categories": [
 		{
 			"id": "1",
-			"name": "Ao"
+			"name": "Aó"
+		},
+		{
+			"id": "2",
+			"name": "Quần"
 		}
 	]
 }

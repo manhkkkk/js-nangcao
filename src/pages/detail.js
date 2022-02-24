@@ -272,7 +272,7 @@ const DetailPage = {
 						</fieldset>
 					</div>
 
-					<button type="submit"
+					<button type="submit" id="btnAddToCart"
 						class="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add
 						to bag</button>
 				</form>
@@ -317,5 +317,15 @@ const DetailPage = {
 </div>
         `;
 	},
+	afterRender(id) {
+		const btnAddToCart = document.querySelector('#btnAddToCart');
+		const inputValue = document.querySelector('#inputValue');
+		btnAddToCart.addEventListener('click', async () => {
+			const { data } = await get(id);
+			addTocart({ ...data, quantity: inputValue.value ? +inputValue.value : 1 }, () => {
+				toastr.success("Đã thêm");
+			})
+		})
+	}
 };
 export default DetailPage;

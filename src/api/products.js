@@ -16,3 +16,8 @@ export const remove = (id) => {
 	const url = `/products/${id}`;
 	return instance.delete(url);
 }
+
+export const searchProducts = (keyword) => {
+	const url = `/products?q=${keyword}`
+	return instance.get(url)
+}

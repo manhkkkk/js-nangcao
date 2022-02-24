@@ -1,11 +1,11 @@
 
 
 
-import { getAll, remove } from "../../../api/products";
-import NavAdmin from "../../../components/NavAdmin";
-import { reRender } from "../../../utils";
+import { getAll, remove } from "../../../../api/categories";
+import NavAdmin from "../../../../components/NavAdmin";
+import { reRender } from "../../../../utils";
 
-const AdminNews = {
+const AdminCategory = {
 	async render() {
 		const { data } = await getAll();
 		return /*html*/`
@@ -43,56 +43,30 @@ const AdminNews = {
 				<table class="min-w-full divide-y divide-gray-200">
 					<thead class="bg-gray-50">
 						<tr>
-							<th scope="col"
-								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-								Image</th>
 							
 							<th scope="col"
 								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 								Name
 							</th>
-							<th scope="col"
-								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-								Desscript</th>
-							<th scope="col"
-								class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-								Price</th>
+							
 							<th scope="col" class="relative px-6 py-3">Edit
 								
 							</th>
 						</tr>
 					</thead>
                         <tbody  class="bg-white divide-y divide-gray-200">
-                            ${data.map((products, index) => `
+                            ${data.map((categories, index) => `
 				   
 				    <tr>
 					    <td class="px-6 py-4 whitespace-nowrap">
-						    <div class="flex items-center">
-							    <div class="flex-shrink-0 h-10 w-10">
-							    <img src="${products.img}" alt="">
-							    </div>
-							    <div class="ml-4">
-								    <div class="text-sm font-medium text-gray-900">
-								    </div>
-							    </div>
-						    </div>
-					    </td>
-					    <td class="px-6 py-4 whitespace-nowrap">
-						    <div class="text-sm text-gray-900">${products.name}</div>
+						    <div class="text-sm text-gray-900">${categories.name}</div>
 						    <div class="text-sm text-gray-500"></div>
 					    </td>
-					    <td class="px-6 py-4 whitespace-nowrap">
-						    <span
-							    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-							    ${products.category}</span>
-					    </td>
-					    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$${products.price}
-					    </td>
 					    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-						    <a href="/admin/news/${products.id}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-						    
-						    <button data-id="${products.id}" class="btn btn-remove">Xóa</button>
-					    </td>
+					    <a href="/admin/news/category/${categories.id}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+					    
+					    <button data-id="/${categories.id}" class="btn btn-remove">Xóa</button>
+				    </td>
 				    </tr>
 
 				    <!-- More people... -->
@@ -129,4 +103,4 @@ const AdminNews = {
 		});
 	}
 }
-export default AdminNews;
+export default AdminCategory;

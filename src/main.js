@@ -13,6 +13,8 @@ import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 import categoryPage from "./pages/categories/category";
 import DetailCategory from "./pages/categories/detail";
+import SearchPage from "./pages/search";
+import AdminCategory from "./pages/admin/news/category/category";
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (component, id) => {
@@ -47,11 +49,17 @@ router.on({
 	"/admin/news": () => print(AdminNews),
 	"/admin/news/add": () => print(AdminNewsAdd),
 	"/admin/news/:id/edit": ({ data }) => print(AdminNewsEdit, data.id),
+	"/admin/category": () => print(AdminCategory),
 	"/signup": () => print(Signup),
 	"/signin": () => print(Signin),
 	"/cart": () => print(CartPage),
-	"/categor": () => print(categoryPage),
-	"/category/:id": () => print(DetailCategory),
+	"/category": () => print(categoryPage),
+	"/category/:id": ({ data }) => {
+		print(DetailCategory, data.id)
+	},
+	"/search/:keyword": ({ data }) => {
+		print(SearchPage, data.keyword)
+	}
 });
 
 router.resolve();
